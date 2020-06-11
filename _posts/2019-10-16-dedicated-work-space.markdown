@@ -7,7 +7,7 @@ categories: self-improvement
 
 For the longest time, my desk was located in the kitchen. It started with my parents wanting to monitor what I was doing on the computer, and
 just extended through highschool as a way to make sure the house didn't seem empty. I could never get work done in this area. I wasn't sure why,
-but the fingers just weren't moving and the Reddit browsing was plenty. As such, through highschool I tried a couple types of persciptions for
+but the fingers just weren't moving and the Reddit browsing was plenty. As such, through highschool I tried a couple types of presciptions for
 ADHD to help me get work done. All in the hope that once I hit college work would be interesting enough I wouldn't need it. Besides, the drugs
 weren't really an easy mode for me. When I don't want to do work, popping a pill isn't exactly easier than picking up a pencil.
 
@@ -40,4 +40,4 @@ like Youtube recommendations or trending topics on Stack Overflow. Anything buil
 your work station.
 
 Overall, there's a lot of advice out there on taming the tiger internally to keep your focus going. When it comes to a dedicated workspaces, it's
-not about teaching the tiger to ignore the pigs, but to give him a forest where rabits are the only thing to hunt.
+not about teaching the tiger to ignore the pigs, but to give him a forest where rabbits are the only thing to hunt.
