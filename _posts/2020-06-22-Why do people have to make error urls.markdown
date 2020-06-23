@@ -13,7 +13,7 @@ refreshing does nothing and press back traps you on www.example.com/not_found.
 Chill on the errors when your Javascript doesn't work. Randomly when opening a clip in Firefox, the page will load, but then get deleted and replaced with
 "Failed to load module." This seems to be related to a part of the CSS not loading properly. It's probably just fluke, but fluke happens.
 Given the vagueness of the error, I can assume this is a pretty large "It'll never hit this" try-catch gone wrong. Know your catch will be hit, or don't
-bother putting it in. The average person won't really care the alignment is wrong as long as the <Video> tag still works. They will definitely care if
+bother putting it in. The average person won't really care the alignment is wrong as long as the video tag still works. They will definitely care if
 the entire page deletes itself several times a day.
 
 Blarg.
