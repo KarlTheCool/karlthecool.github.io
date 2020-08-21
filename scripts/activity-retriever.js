@@ -19,7 +19,7 @@ let renderFeed = (err, data) => {
 
     feedDiv.innerHTML = ""
 
-    let feedCount = 0
+    feedItems = [];
 
     for (post of data) {
         if (post.reblog || post.in_reply_to_id) {
@@ -31,8 +31,25 @@ let renderFeed = (err, data) => {
         div.addEventListener("click",
             () => {window.location = ref}
         );
-        feedDiv.appendChild(div)
-        feedCount++
+        if (post.media_attachments) {
+            for (let media of post.media_attachments) {
+                if (media.type === 'image') {
+                    let img = document.createElement("img");
+                    img.src = media.preview_url;
+                    img.alt = media.description
+                    div.appendChild(img);
+                } else {
+                    console.error('unhandled media type', media.type)
+                }
+            }
+        }
+        feedItems.push({date: post.created_at, element: div})
+    }
+
+    feedItems.sort()
+
+    for (let i = 0; i < 10; i++) {
+        feedDiv.appendChild(feedItems[i].element)
     }
 }
 
