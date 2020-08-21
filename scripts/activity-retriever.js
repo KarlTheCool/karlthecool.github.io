@@ -11,6 +11,15 @@ let getJSON = function(url, callback) {
     xhr.send();
 };
 
+// date: in ISO 8601 format
+// element: html element object
+// platform: social media platform
+let FeedItem = (date, platform, element) => {
+    return {
+        date, platform, element
+    }
+}
+
 let renderFeed = (err, data) => {
     if (err !== 200) {
         console.error(err, "when getting feed");
@@ -20,15 +29,20 @@ let renderFeed = (err, data) => {
     feedDiv.innerHTML = ""
 
     feedItems = [];
+    // {
+    //     date: in ISO 8601 format
+    //     element: html element object
+    //     platform: social media platform
+    // }
 
     for (post of data) {
         if (post.reblog || post.in_reply_to_id) {
             continue
         }
-        let div = document.createElement("div");
-        div.innerHTML = post.content
+        let mastoPost = document.createElement("div");
+        mastoPost.innerHTML = post.content
         let ref = post.url.slice()
-        div.addEventListener("click",
+        mastoPost.addEventListener("click",
             () => {window.location = ref}
         );
         if (post.media_attachments) {
@@ -37,13 +51,13 @@ let renderFeed = (err, data) => {
                     let img = document.createElement("img");
                     img.src = media.preview_url;
                     img.alt = media.description
-                    div.appendChild(img);
+                    mastoPost.appendChild(img);
                 } else {
                     console.error('unhandled media type', media.type)
                 }
             }
         }
-        feedItems.push({date: post.created_at, element: div})
+        feedItems.push(FeedItem(post.created_at, 'mastodon', mastoPost))
     }
 
     feedItems.sort()
