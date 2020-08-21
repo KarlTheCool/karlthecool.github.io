@@ -4,16 +4,20 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Karl Phillips</title>
+	<link rel="stylesheet" type="text/css" href="styles/kstyle.css">
+	<link rel="stylesheet" type="text/css" href="styles/fontawesome/css/all.min.css">
 </head>
 <body>
 	<h1>Welcome to the Karl Zone</h1>
 	<h2>Latest Activity</h2>
-	<p id="feed">
+	<div id="feed">
 		loading ...
-	</p>
-	<script src="activity-retriever.js"></script>
+	</div>
 	<h2>Keep in touch!</h2>
-	<a rel="me" href="https://mastodon.online/@KarlTheCool">Mastodon</a>
-	<a rel="me" href="https://github.com/KarlTheCool">Github</a>
+	<ul class="socials">
+		<li><a class="fab fa-mastodon" rel="me" title="Mastodon" href="https://mastodon.online/@KarlTheCool"></a></li>
+		<li><a class="fab fa-github" rel="me" title="Github" href="https://github.com/KarlTheCool"></a></li>
+	</ul>
+	<script src="scripts/activity-retriever.js"></script>
 </body>
 </html>
