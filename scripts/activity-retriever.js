@@ -52,6 +52,13 @@ let renderFeed = (err, data) => {
                     img.src = media.preview_url;
                     img.alt = media.description
                     mastoPost.appendChild(img);
+                } else if (media.type === 'gifv') {
+                    let gifv = document.createElement("video");
+                    gifv.src = media.url;
+                    gifv.loop = true;
+                    gifv.autoplay = true;
+                    gifv.muted = true;
+                    mastoPost.appendChild(gifv);
                 } else {
                     console.error('unhandled media type', media.type)
                 }
