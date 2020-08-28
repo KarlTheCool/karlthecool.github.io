@@ -61,6 +61,9 @@ let renderFeed = (err, data) => {
                     mastoPost.appendChild(gifv);
                 } else {
                     console.error('unhandled media type', media.type)
+                    let err = document.createElement("p");
+                    err.innerHTML = "Could not display media";
+                    mastoPost.appendChild(err);
                 }
             }
         }

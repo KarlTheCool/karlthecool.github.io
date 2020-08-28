@@ -1,45 +1,98 @@
 :root {
-    --main-bg-color: #232427;
-    --side-bg-color: #A9B5C0;
-    --pape-bg-color: #ECF1F2;
-    --hili-red-color: #FF93FB;
-    --hili-blue-color: #88E0F3;
-    --hili-green-color: #CCF8B9;
+    /* Sizes */
+    --width-to-read: 70em;
+    --width-to-nav: 100em;
+
+    /* Nights */
+    --key-lime: #edf67dff;
+    --orchid-crayola: #f896d8ff;
+    --heliotrope: #ca7df9ff;
+    --majorelle-blue: #724cf9ff;
+    --dark-slate-blue: #564592ff;
+    /* Lights */
+    --lavender-blush: #f7edf0ff;
+    --baby-pink: #f4cbc6ff;
+    --melon: #f4afabff;
+    --medium-champagne: #f4eea9ff;
+    --canary: #f4f482ff;
 }
 
 body {
-    background-color: var(--main-bg-color);
+    font-family: Tahoma, Geneva, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: var(--orchid-crayola);
+    background-repeat: no-repeat;
+    background: linear-gradient(0deg, var(--orchid-crayola) 0%, var(--heliotrope) 10%, var(--majorelle-blue) 20%, var(--dark-slate-blue) 100%); 
 }
 
-h1 {
-    color: white;
+/*
+    HEADER
+*/
+
+header {
+    margin: auto;
+    width: 100%;
+    max-width: 100em;
+    height: 3em;
 }
 
-h2 {
-    margin-bottom: 0;
+nav {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1em;
 }
 
-p {
-    margin-top: 0;
+nav > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+    text-decoration: inherit;
 }
 
-h2, p, div, ul {
-    background-color: var(--side-bg-color);
+.about {
+    background-color: white;
 }
 
-h2:nth-of-type(3n+0) {
-    color: var(--hili-green-color);
+.support {
+    background-color: white;
 }
 
-h2:nth-of-type(3n+1) {
-    color: var(--hili-red-color);
+/*
+    BODY
+*/
+
+main {
+    background: var(--lavender-blush);
+    margin: auto;
+    max-width: var(--width-to-read);
 }
 
-h2:nth-of-type(3n+2) {
-    color: var(--hili-blue-color);
+#scrollbait {
+    width: 100%;
+    min-height: 80vh;
 }
 
-.socials {
+/*
+    FOOTER
+*/
+
+footer {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: auto;
+    width: 100%;
+    max-width: var(--width-to-nav);
+}
+
+address ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -52,13 +105,8 @@ h2:nth-of-type(3n+2) {
 	align-content: stretch;
 }
 
-.socials * {
+address ul * {
     font-size: 1.2em;
-    margin: 0 0.25em 0 0.25em;
+    margin: 0.25em;
     text-decoration: none;
-}
-
-#feed div:hover {
-    filter: brightness(125%);
-    cursor: pointer;
 }
