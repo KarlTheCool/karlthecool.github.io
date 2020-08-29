@@ -1,4 +1,7 @@
-let feedDiv = document.getElementById("feed");
+const MAX_RETRIEVE = 25;
+const MAX_POST = 10;
+
+let feedDiv = document.getElementsByClassName("feed")[0];
 
 let getJSON = function(url, callback) {
     let xhr = new XMLHttpRequest();
@@ -40,6 +43,7 @@ let renderFeed = (err, data) => {
             continue
         }
         let mastoPost = document.createElement("div");
+        mastoPost.classList.add("feed__item");
         mastoPost.innerHTML = post.content
         let ref = post.url.slice()
         mastoPost.addEventListener("click",
@@ -72,12 +76,12 @@ let renderFeed = (err, data) => {
 
     feedItems.sort()
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < MAX_POST; i++) {
         feedDiv.appendChild(feedItems[i].element)
     }
 }
 
 getJSON(
-    'https://mastodon.online/api/v1/accounts/64626/statuses?limit=25',
+    'https://mastodon.online/api/v1/accounts/64626/statuses?limit=' + MAX_RETRIEVE,
     renderFeed
 );

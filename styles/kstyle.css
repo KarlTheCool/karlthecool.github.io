@@ -1,7 +1,6 @@
 :root {
     /* Sizes */
     --width-to-read: 70em;
-    --width-to-nav: 100em;
 
     /* Nights */
     --key-lime: #edf67dff;
@@ -17,27 +16,36 @@
     --canary: #f4f482ff;
 }
 
-body {
+html, 
+.body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.body {
+    display:flex; 
+    flex-direction:column; 
+
     font-family: Tahoma, Geneva, sans-serif;
-    margin: 0;
-    min-height: 100vh;
+    min-height: 100%;
     background: var(--orchid-crayola);
-    background-repeat: no-repeat;
-    background: linear-gradient(0deg, var(--orchid-crayola) 0%, var(--heliotrope) 10%, var(--majorelle-blue) 20%, var(--dark-slate-blue) 100%); 
 }
 
 /*
     HEADER
 */
 
-header {
-    margin: auto;
+.header {
     width: 100%;
-    max-width: 100em;
-    height: 3em;
+    min-height: 3em;
+    background: var(--lavender-blush);
 }
 
-nav {
+.nav {
+    margin: 0 auto 0 auto;
+
+    width: var(--width-to-read);
     height: 100%;
 
     display: grid;
@@ -45,7 +53,7 @@ nav {
     grid-column-gap: 1em;
 }
 
-nav > a {
+.nav__item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,45 +62,38 @@ nav > a {
     text-decoration: inherit;
 }
 
-.about {
-    background-color: white;
-}
-
-.support {
-    background-color: white;
-}
-
 /*
     BODY
 */
 
-main {
+.main {
     background: var(--lavender-blush);
-    margin: auto;
-    max-width: var(--width-to-read);
+    margin: 0 auto 0 auto;
+    width: var(--width-to-read);
 }
 
-#scrollbait {
-    width: 100%;
-    min-height: 80vh;
+.main--remaining {
+    flex-grow : 1;
+
+    margin: 0 auto 0 auto;
+    width: var(--width-to-read);
+    background: var(--lavender-blush);
 }
 
 /*
     FOOTER
 */
 
-footer {
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    margin: auto;
+.footer {
     width: 100%;
-    max-width: var(--width-to-nav);
+    background: var(--lavender-blush);
+}
+.contacts {
+    margin: 0 auto 0 auto;
+    width: var(--width-to-read);
 }
 
-address ul {
+.socials {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -105,8 +106,22 @@ address ul {
 	align-content: stretch;
 }
 
-address ul * {
+.socials__item {
     font-size: 1.2em;
     margin: 0.25em;
     text-decoration: none;
+}
+
+/*
+    APPS
+*/
+
+/* Activity Retriever */
+.feed {
+
+}
+
+.feed__item:hover {
+    cursor: pointer;
+    background: white;
 }
