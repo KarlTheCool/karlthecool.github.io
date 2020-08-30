@@ -45,10 +45,10 @@ let renderFeed = (err, data) => {
         let mastoPost = document.createElement("div");
         mastoPost.classList.add("feed__item");
         mastoPost.innerHTML = post.content
-        let ref = post.url.slice()
-        mastoPost.addEventListener("click",
-            () => {window.location = ref}
-        );
+        // let ref = post.url.slice()
+        // mastoPost.addEventListener("click",
+        //     () => {window.location = ref}
+        // );
         if (post.media_attachments) {
             for (let media of post.media_attachments) {
                 if (media.type === 'image') {
