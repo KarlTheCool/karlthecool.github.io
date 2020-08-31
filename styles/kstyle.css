@@ -72,6 +72,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 1em;
+
+    overflow-x: auto;
 }
 
 .nav__item {
