@@ -49,7 +49,7 @@ let renderFeed = (err, data) => {
         // mastoPost.addEventListener("click",
         //     () => {window.location = ref}
         // );
-        if (post.media_attachments) {
+        if (false && post.media_attachments) { // FIXME
             for (let media of post.media_attachments) {
                 if (media.type === 'image') {
                     let img = document.createElement("img");
