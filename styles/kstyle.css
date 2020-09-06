@@ -57,7 +57,6 @@ body {
 
 .header {
     width: 100%;
-    height: 3em;
     background: var(--lavender-blush);
 }
 
@@ -66,7 +65,6 @@ body {
 
     width: 100%;
     max-width: var(--width-to-read);
-    height: 100%;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -80,37 +78,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: inherit;
-    text-decoration: inherit;
-}
-
-/*
-    BODY
-*/
-
-.main {
-    flex-grow : 1;
-
-    margin: 0 auto 0 auto;
-    width: 100%;
-    max-width: var(--width-to-read);
-
-    background: var(--lavender-blush);
-}
-
-/*
-    FOOTER
-*/
-
-.footer {
-    width: 100%;
-    background: var(--lavender-blush);
-}
-.contacts {
-    margin: 0 auto 0 auto;
-    width: 100%;
-    max-width: var(--width-to-read);
 }
 
 .socials {
@@ -129,15 +96,141 @@ body {
 .socials__item {
 }
 
+.nav__home {
+    height: 6em;
+}
+
+/*
+    BODY
+*/
+
+.main {
+    flex-grow : 1;
+
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+
+    background: var(--lavender-blush);
+}
+
+
+.chatter {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 15em;
+    max-height: 40vh;
+}
+
+.chatter__layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+.chatter__avatar {
+    width: 100%;
+    height: 100%;
+
+    background-color: black;
+    background-image: url("/images/character/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.chatter__avatar__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.chatter__content {
+    background: white;
+    overflow: auto;
+}
+
+.chatter__mastodon {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+}
+
+.chatter__mastodon > p {
+    flex-grow: 1;
+}
+
+.chatter__mastodon__meta {
+    width: 100%;
+    height: 2em;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.chatter__mastodon .u-url {
+    text-decoration: none;
+}
+
+.chatter__mastodon .u-url > span {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 45em) {
+    .chatter__layout {
+        display: block;
+    }
+    .chatter__avatar {
+        background-position: center; 
+    }
+    .chatter__content {
+        
+    }
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(552px, 100%));
+    grid-gap: 2em;
+}
+
+/*
+    FOOTER
+*/
+
+.footer {
+    width: 100%;
+    background: var(--lavender-blush);
+}
+
+.legal {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+}
+
+.contacts {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+
+    font-style: normal;
+}
+
 /*
     APPS
 */
 
-/* Activity Retriever */
-.feed {
+/* Zdog Logo */
 
-}
+.zdog-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
 
-.feed__item {
-
+    background-color: rgb(0, 0, 136);
 }
