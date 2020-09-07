@@ -123,6 +123,20 @@ body {
     max-height: 40vh;
 }
 
+.chatter__avatar > .chatter__media {
+    position: relative;
+}
+
+.chatter__media + .chatter__avatar__canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 25%;
+    height: 25%;
+}
+
+
 .chatter__layout {
     position: relative;
     display: grid;
@@ -140,6 +154,8 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    overflow: hidden; /* Stop the canvas from claiming space but not giving up space */
 }
 
 .chatter__avatar__canvas {
@@ -181,14 +197,20 @@ body {
 }
 
 @media only screen and (max-width: 45em) {
+    .chatter {
+        height: 75vh;
+        max-height: unset;
+    }
     .chatter__layout {
-        display: block;
+        grid-template-columns: unset;
+        grid-template-rows: 2fr minmax(1fr, min-content);
     }
     .chatter__avatar {
-        background-position: center; 
+        background-position: center;
+        height: auto;
     }
     .chatter__content {
-        
+
     }
 }
 
