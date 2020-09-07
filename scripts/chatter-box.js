@@ -1,6 +1,13 @@
 (function() {
     const MASTODON = "mastodon.online";
     const MASTODON_ID = "64626";
+    const LIMIT = 6;
+
+    let mastodonPosts = [];
+    let feedDiv = null;
+    let chatter = null;
+    windowReady().then(() => feedDiv = document.getElementsByClassName("chatter__content")[0]);
+    windowReady().then(() => chatter = document.getElementsByClassName("chatter")[0]);
 
     function makeRequest (method, url) {
         return new Promise(function (resolve, reject) {
@@ -32,15 +39,6 @@
         });
     }
 
-    // date: in ISO 8601 format
-    // element: html element object
-    // platform: social media platform
-    function FeedItem (date, platform, element) {
-        return {
-            date, platform, element
-        }
-    }
-
     function MessageElement (post) {
         let mastoPost = document.createElement("div");
         mastoPost.classList.add("chatter__mastodon");
@@ -58,50 +56,48 @@
         </div>
         `;
         mastoPost.innerHTML += post.content;
-        if (false && post.media_attachments) { // FIXME
+        if (post.media_attachments.length > 0) {
             for (let media of post.media_attachments) {
                 if (media.type === 'image') {
                     let img = document.createElement("img");
+                    img.classList.add("chatter__mastodon__media");
                     img.src = media.preview_url;
                     img.alt = media.description
-                    mastoPost.appendChild(img);
+                    mastoPost.prepend(img);
                 } else if (media.type === 'gifv') {
                     let gifv = document.createElement("video");
+                    gifv.classList.add("chatter__mastodon__media");
                     gifv.src = media.url;
                     gifv.loop = true;
                     gifv.autoplay = true;
                     gifv.muted = true;
-                    mastoPost.appendChild(gifv);
+                    mastoPost.prepend(gifv);
                 } else {
                     console.error('unhandled media type', media.type)
                     let err = document.createElement("p");
+                    err.classList.add("chatter__mastodon__media");
                     err.innerHTML = "Could not display media";
-                    mastoPost.appendChild(err);
+                    mastoPost.prepend(err);
                 }
             }
+            
         }
         return mastoPost;
     }
 
-    let feedItems = [];
-    let feedDiv = null;
-    windowReady().then(() => feedDiv = document.getElementsByClassName("chatter__content")[0]);
-
-    Promise.all([windowReady(), makeRequest('GET', 'https://' + MASTODON + '/api/v1/accounts/' + MASTODON_ID + '/statuses?limit=25&exclude_reblogs=1')]).then((results) => {
-
-        let data = JSON.parse(results[1]);
-
-        for (post of data) {
-            feedItems.push(FeedItem(post.created_at, 'mastodon', MessageElement(post)));
-        }
-
-        feedItems.sort()
+    Promise.all([windowReady(), makeRequest('GET', `https://${MASTODON}/api/v1/accounts/${MASTODON_ID}/statuses?limit=${LIMIT}&exclude_reblogs=1`)]).then((results) => {
+        mastodonPosts = JSON.parse(results[1]);
     }).catch(console.error);
 
     windowReady().then(() => document.getElementById('moar').addEventListener('click', () => {
         if (!feedDiv) return;
-        feedDiv.innerHTML = ""
-        feedDiv.appendChild(feedItems[Math.floor(Math.random() * Math.floor(feedItems.length))].element);
+        let post = mastodonPosts[Math.floor(Math.random() * Math.floor(mastodonPosts.length))]
+        feedDiv.innerHTML = MessageElement(post).outerHTML;
+        if (post.media_attachments.length > 0) {
+            chatter.classList.add("chatter--has-media");
+        } else {
+            chatter.classList.remove("chatter--has-media");
+        }
     }));
 
 })();

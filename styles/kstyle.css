@@ -123,13 +123,9 @@ body {
     max-height: 40vh;
 }
 
-.chatter__avatar > .chatter__media {
-    position: relative;
-}
-
-.chatter__media + .chatter__avatar__canvas {
+.chatter--has-media .chatter__avatar {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
 
     width: 25%;
@@ -178,6 +174,11 @@ body {
 
 .chatter__mastodon > p {
     flex-grow: 1;
+}
+
+.chatter__mastodon__media {
+    width: 100%;
+    height: 50%;
 }
 
 .chatter__mastodon__meta {
