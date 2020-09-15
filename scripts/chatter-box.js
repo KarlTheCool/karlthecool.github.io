@@ -1,13 +1,13 @@
 (function() {
     const MASTODON = "mastodon.online";
     const MASTODON_ID = "64626";
-    const LIMIT = 6;
+    const LIMIT = 25;
 
     let mastodonPosts = [];
     let feedDiv = null;
     let chatter = null;
     windowReady().then(() => feedDiv = document.getElementsByClassName("chatter__content")[0]);
-    windowReady().then(() => chatter = document.getElementsByClassName("chatter")[0]);
+    windowReady().then(() => layout = document.getElementsByClassName("chatter__layout")[0]);
 
     function makeRequest (method, url) {
         return new Promise(function (resolve, reject) {
@@ -39,65 +39,88 @@
         });
     }
 
-    function MessageElement (post) {
+    function clearMedia() {
+        for (let e of layout.getElementsByClassName('chatter__mastodon__media')) {
+            e.remove();
+        }
+        layout.classList.remove("chatter--has-media");
+    }
+
+    function updateMessage(post) {
         let mastoPost = document.createElement("div");
         mastoPost.classList.add("chatter__mastodon");
         mastoPost.innerHTML += `
-        <div class="chatter__mastodon__meta">
+        <div class="chatter__meta">
             <a href=${post.account.url}>@${post.account.username}@${MASTODON}</a>
-            ${post.in_reply_to_id ? `
-                <a href="${post.url}" class="nostyle--a" title="View full conversation" aria-label="View full conversation">
-                    <span class="fas fa-comments" aria-hidden="true"></span>
-                </a>
-            ` : '' }
-            <a href=${post.url} class="nostyle--a" title="Permanent link" aria-label="Permanent link">
+            <a href=${post.url} class="nostyle--a" aria-label="Permanent link">
+                Permanent link
                 <span class="fas fa-link" aria-hidden="true"></span>
             </a>
         </div>
         `;
+        if (post.in_reply_to_id) {
+            mastoPost.innerHTML += `<a href="${post.url}">View context</a>`
+        }
         mastoPost.innerHTML += post.content;
+
+        clearMedia();
+
         if (post.media_attachments.length > 0) {
+            let mediaContainer = document.createElement('div');
+            mediaContainer.classList.add("chatter__mastodon__media");
             for (let media of post.media_attachments) {
                 if (media.type === 'image') {
                     let img = document.createElement("img");
-                    img.classList.add("chatter__mastodon__media");
                     img.src = media.preview_url;
                     img.alt = media.description
-                    mastoPost.prepend(img);
+                    mediaContainer.prepend(img);
                 } else if (media.type === 'gifv') {
                     let gifv = document.createElement("video");
-                    gifv.classList.add("chatter__mastodon__media");
                     gifv.src = media.url;
                     gifv.loop = true;
                     gifv.autoplay = true;
                     gifv.muted = true;
-                    mastoPost.prepend(gifv);
+                    mediaContainer.prepend(gifv);
                 } else {
                     console.error('unhandled media type', media.type)
                     let err = document.createElement("p");
-                    err.classList.add("chatter__mastodon__media");
                     err.innerHTML = "Could not display media";
-                    mastoPost.prepend(err);
+                    mediaContainer.classList.remove("chatter__mastodon__media");
+                    mediaContainer.classList.add("chatter__mastodon__media--error");
+                    mediaContainer.prepend(err);
                 }
             }
+            layout.prepend(mediaContainer);
             
         }
-        return mastoPost;
+        feedDiv.innerHTML = mastoPost.outerHTML;
     }
 
     Promise.all([windowReady(), makeRequest('GET', `https://${MASTODON}/api/v1/accounts/${MASTODON_ID}/statuses?limit=${LIMIT}&exclude_reblogs=1`)]).then((results) => {
         mastodonPosts = JSON.parse(results[1]);
     }).catch(console.error);
 
+    let postIndex = -1;
+    let aboutText = "";
+    windowReady().then(() => {
+        let elem = document.getElementById("about-content");
+        elem.classList.remove('noscript-fallback');
+        aboutText = elem.outerHTML;
+        elem.remove();
+    })
     windowReady().then(() => document.getElementById('moar').addEventListener('click', () => {
         if (!feedDiv) return;
-        let post = mastodonPosts[Math.floor(Math.random() * Math.floor(mastodonPosts.length))]
-        feedDiv.innerHTML = MessageElement(post).outerHTML;
+        postIndex = (postIndex + 1) % mastodonPosts.length;
+        let post = mastodonPosts[postIndex]
+        updateMessage(post);
         if (post.media_attachments.length > 0) {
-            chatter.classList.add("chatter--has-media");
-        } else {
-            chatter.classList.remove("chatter--has-media");
+            layout.classList.add("chatter--has-media");
         }
+    }));
+    windowReady().then(() => document.getElementById('about').addEventListener('click', () => {
+        if (!feedDiv) return;
+        clearMedia();
+        feedDiv.innerHTML = aboutText;
     }));
 
 })();

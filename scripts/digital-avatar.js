@@ -54,8 +54,9 @@
         ctx.drawImage(img, cx, cy, cw, ch,  x, y, w, h);
     }
 
-    function emote(emotion) {
+    function emote(emotion, onload=null) {
         let img = document.createElement('img');
+        img.addEventListener('load', onload);
         img.src = '/images/character/' + emotion + '.png';
         return img;
     }
@@ -65,7 +66,7 @@
         let ctx = avatar_canvas.getContext("2d");
 
         let happy = emote('happy');
-        let ecstatic = emote('ecstatic');
+        let ecstatic = emote('ecstatic', draw);
         let distress = emote('distress');
         let grumpy = emote('grumpy');
 
@@ -74,20 +75,36 @@
         let contentBox = document.getElementsByClassName('chatter__content')[0];
 
         function draw(){
-            avatar_canvas.width  = avatar_canvas.offsetWidth;
-            avatar_canvas.height = avatar_canvas.offsetHeight;
+            // avatar_canvas.width  = avatar_canvas.offsetWidth;
+            // avatar_canvas.height = avatar_canvas.offsetHeight;
+            ctx.clearRect(0, 0, avatar_canvas.width, avatar_canvas.height);
 
             drawImageProp(ctx, emotion, 0, 0, avatar_canvas.width, avatar_canvas.height);
         }
         window.addEventListener('resize', draw);
         // onInterval(draw) // animate
-        ecstatic.addEventListener('load', draw);
 
-        document.getElementsByClassName('chatter__content')[0].addEventListener('DOMSubtreeModified', () => {
-            console.log(contentBox.innerHTML);
-            emotion = [happy, ecstatic, distress, grumpy][Math.floor(Math.random() * Math.floor(4))]
+        let skipFirst = true;
+        const observer = new MutationObserver(() => {
+            if (skipFirst) {
+                skipFirst = false;
+                return;
+            }
+            const emotions = contentBox.innerHTML.match(
+                // Emojis OR Bang
+                /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])|!/g
+            ) || [];
+            if (emotions.includes('🙄')) {
+                emotion = grumpy;
+            } else if (emotions.includes('😵')) {
+                emotion = distress;
+            } else if (emotions.includes('!')) {
+                emotion = ecstatic;
+            } else {
+                emotion = happy;
+            }
             draw();
-        })
+        }).observe(contentBox, { attributes: false, childList: true, subtree: false });
     }
 
     window.addEventListener('load', start);
