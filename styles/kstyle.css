@@ -30,25 +30,33 @@ body {
     background: var(--orchid-crayola);
 }
 
+.noscript-fallback {
+    display: none;
+}
+
 /*
     HELPERS
 */
 
 .nostyle--a:link {
-    color: initial;
+    color: unset;
     text-decoration: none;
 }
 
 .nostyle--a:visited {
-    color: initial;
+    color: unset;
 }
 
 .nostyle--a:link:active {
-    color: initial;
+    color: unset;
 }
 	
 .nostyle--a:visited:active {
-    color: initial;
+    color: unset;
+}
+
+.fab, .fas {
+    font-size: 1.5em;
 }
 
 /*
@@ -57,8 +65,8 @@ body {
 
 .header {
     width: 100%;
-    height: 3em;
     background: var(--lavender-blush);
+    z-index: 1;
 }
 
 .nav {
@@ -66,7 +74,6 @@ body {
 
     width: 100%;
     max-width: var(--width-to-read);
-    height: 100%;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -80,37 +87,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: inherit;
-    text-decoration: inherit;
-}
-
-/*
-    BODY
-*/
-
-.main {
-    flex-grow : 1;
-
-    margin: 0 auto 0 auto;
-    width: 100%;
-    max-width: var(--width-to-read);
-
-    background: var(--lavender-blush);
-}
-
-/*
-    FOOTER
-*/
-
-.footer {
-    width: 100%;
-    background: var(--lavender-blush);
-}
-.contacts {
-    margin: 0 auto 0 auto;
-    width: 100%;
-    max-width: var(--width-to-read);
 }
 
 .socials {
@@ -129,15 +105,399 @@ body {
 .socials__item {
 }
 
+.nav__home {
+    height: 6em;
+}
+
+/*
+    BODY
+*/
+
+.main {
+    flex-grow : 1;
+
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+
+    background: var(--canary);
+}
+
+
+.chatter {
+    position: sticky;
+    top: 0.75em;
+    margin-top: 0.75em;
+    width: 100%;
+}
+
+.chatter__button {
+    cursor: pointer;
+    background-color: green;
+    border: none;
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 900;
+    width: auto;
+    height: 2em;
+    padding: 0 1em;
+}
+
+.chatter__button:hover {
+    filter: invert(75%);
+}
+
+.chatter--has-media .chatter__avatar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 15%;
+    height: 50%;
+}
+
+
+.chatter__layout {
+    position: relative;
+    top: 0;
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    height: 15em;
+    max-height: 40vh;
+
+    transition: height .15s ease-in;
+}
+
+.chatter--has-media {
+    grid-template-columns: 1fr 1fr;
+}
+
+.chatter__avatar {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    border: solid black;
+
+    background-color: black;
+    background-image: url("/images/character/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden; /* Stop the canvas from claiming space but not giving up space */
+}
+
+.chatter__avatar__canvas {
+    display: block;
+    margin: auto;
+    height: 100%;
+}
+
+.chatter__content {
+    background: white;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chatter__controls {
+    position: absolute;
+    bottom: -0.5em;
+    right: 0;
+    display: flex;
+    background: white;
+}
+
+.chatter__visibility {
+    position: absolute;
+    bottom: -2em;
+    
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+    background: white;
+}
+
+.chatter__visibility:hover {
+    color: black;
+    border-color: black;
+}
+
+.chatter__visibility::after {
+    content: "\f077";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.8em;
+
+    display: inline-block;
+    transition: transform .1s ease-in;
+    transform: rotate(0deg);
+}
+
+#chatter__toggle-id:checked ~ .chatter__visibility::after {
+    content: "\f077";
+    transform: rotate(-180deg);
+}
+
+#chatter__toggle-id:checked ~ .chatter__layout {
+    height: 0 !important;
+    overflow: hidden;
+}
+
+.chatter__mastodon__media {
+    width: 100%;
+    height: 100%;
+    max-height: 50vh;
+    background: black;
+
+    overflow: hidden;
+}
+
+.chatter__mastodon__media > * {
+    display: block;
+    height: 100%;
+    margin: auto;
+}
+
+.chatter__mastodon__media--error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    background: black;
+}
+
+.chatter__meta {
+    position: absolute;
+    top: -0.5em;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2em;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.chatter__meta > a {
+    background: white;
+}
+
+.chatter__mastodon .u-url {
+    text-decoration: none;
+}
+
+.chatter__mastodon .u-url > span {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 45em) {
+    .chatter {
+        
+    }
+    .chatter__layout {
+        height: 50vh;
+        max-height: unset;
+
+        grid-template-columns: unset;
+        grid-template-rows: 2fr 1fr;
+    }
+    .chatter__avatar {
+        background-position: center;
+        height: auto;
+    }
+    .chatter--has-media {
+        grid-template-rows: 2fr 1fr;
+    }
+    .chatter--has-media .chatter__avatar {
+        position: absolute;
+        top: 0;
+        left: 0;
+    
+        width: auto;
+        height: 33%;
+    }
+}
+
+.portfolio {
+
+}
+
+.portfolio__header {
+    text-align: center;
+}
+
+.portfolio__header::before, .portfolio__header::after {
+    content: "—";
+}
+
+.portfolio__item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 15em;
+}
+
+.work__preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    box-shadow: inset 0 0 0 #000;
+    background-color: black;
+    transition: background-size .15s linear, opacity .15s linear, box-shadow .15s linear;
+}
+
+.work__preview:hover {
+    background-size: 125% 125%;
+    box-shadow: inset 0 0 17em #000;
+}
+
+.work__preview::before {
+    content: "\f11b";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 5em;
+
+    color: white;
+    opacity: 0.15;
+}
+
+.work__preview:hover::before {
+    content: "\f11b";
+
+    opacity: 1.0;
+}
+
+@media only screen and (max-width: 45em) {
+    .portfolio__item {
+        grid-template-columns: unset;
+        grid-template-rows: 1fr 1fr;
+        height: unset;
+    }
+    .work__preview {
+        /* background-size: contain; */
+    }
+    .work__preview:hover {
+        /* background-size: contain; */
+    }
+}
+
+.work__description {
+    display: flex;
+    flex-direction: column;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    color: white;
+}
+
+.description__header {
+    margin: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
+}
+
+.description__flavour {
+    margin: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
+}
+
+.description__explain {
+    display:  none;/*inline; FIXME*/
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
+}
+
+.description__explain__content {
+    display: none;
+}
+
+.description__actions {
+    flex-grow: 1;
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
+}
+
+.description__actions__item {
+    width: 5em;
+    height: 3em;
+    text-align: center;
+}
+
+.description__actions__item:hover {
+    filter: invert(75%);
+}
+
+.description__actions__item > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+    FOOTER
+*/
+
+.footer {
+    width: 100%;
+    background: var(--lavender-blush);
+    z-index: 1;
+}
+
+.legal {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+}
+
+.contacts {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: var(--width-to-read);
+
+    font-style: normal;
+}
+
 /*
     APPS
 */
 
-/* Activity Retriever */
-.feed {
+/* Zdog Logo */
 
-}
+.zdog-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
 
-.feed__item {
-
+    background-color: rgb(0, 0, 136);
 }
