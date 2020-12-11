@@ -1,7 +1,7 @@
 # karlthecool.github.io
 A cool website to show how *cool* I am
 
-Made with <3 in vanilla HTML+CSS. Organized with (BEM)[http://getbem.com/introduction/].
+Made with <3 in vanilla HTML+CSS. Organized with [BEM](http://getbem.com/introduction/).
 
 # FAQ
 
