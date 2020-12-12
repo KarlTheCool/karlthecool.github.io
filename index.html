@@ -39,31 +39,31 @@
     <script src="scripts/shortcuts.js"></script>
 </head>
 <body>
-    <div class="modal" id="email">
+    <div class="modal" id="email" tabindex="-1">
 		<div class="email">
 			<div class="email__header">
 				<h1 class="email__heading text__hype">
 					Get in touch!
 				</h1>
-				<a href="#" class="email__exit" aria-label="close modal">
-					<svg class="feather feather--tapable">
+				<a href="#" class="email__exit" title="close modal">
+					<svg class="feather feather--tapable" aria-hidden="true">
 						<use xlink:href="styles/feather/feather-sprite.svg#x"/>
 					</svg>
 				</a>
 			</div>
 			<div class="email__inner">
 				<div class="email__address">
-					<b>Email: </b>
+					<label for="email-address">Email: </label>
 					<textarea readonly id="email-address" class="email__address__inner" rows="1" cols="13">k@rlphilli.ps</textarea>
                     <b>
                         <a href="mailto:k@rlphilli.ps" class="email__mailto" title="open address in app" aria-label="open address in app">
-                            <svg class="feather feather--tapable">
+                            <svg class="feather feather--tapable" aria-hidden="true">
                                 <use xlink:href="styles/feather/feather-sprite.svg#external-link"/>
                             </svg>
                         </a>
                     </b>
 				</div>
-				<b>Encrypt with (optional)</b>
+				<label for="pgp-key">Encrypt with (optional)</label>
 				<textarea readonly id="pgp-key" class="email__pgp-key" rows="53" cols="60">
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
