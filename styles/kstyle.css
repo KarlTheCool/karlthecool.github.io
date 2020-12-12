@@ -70,7 +70,12 @@ body {
     scroll-behavior: smooth;
 }
 
+.modal {
+    display: none;
+}
+
 .modal:target {
+    display: block;
     position: fixed;
     z-index: 4;
     top: 0;
@@ -81,13 +86,7 @@ body {
     background: rgba(0,0,0,0.8);
 }
 
-.modal:target .email {
-    display: unset;
-}
-
 .email {
-    display: none;
-
     position: fixed;
     z-index: 5;
     top: 50%;

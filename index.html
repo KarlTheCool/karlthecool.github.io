@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"> 
-<html>
 <head>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <!-- Thx https://megatags.co/ -->
@@ -35,9 +34,9 @@
 
     <link rel="stylesheet" type="text/css" href="styles/kstyle.css">
 
-    <script type="application/javascript" src="scripts/mobile-viewport-fix.js"></script>
-    <script type="application/javascript" src="scripts/quality-of-life.js"></script>
-    <script type="application/javascript" src="scripts/shortcuts.js"></script>
+    <script src="scripts/mobile-viewport-fix.js"></script>
+    <script src="scripts/quality-of-life.js"></script>
+    <script src="scripts/shortcuts.js"></script>
 </head>
 <body>
     <div class="modal" id="email">
@@ -123,7 +122,7 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
 		</div>
 	</div>
     <div class="parallax">
-        <div id="latest"></div>
+        <div id="latest" aria-hidden="true"></div>
         <header class="header">
             <a class="header__hero" href="/Shader-Stacker">
                 <div class="hero__info">
@@ -141,21 +140,22 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
                 class="hero__visual high-motion-element"
                 src="static/hero-noaudio.webm"
                 poster="static/hero.png"
-                muted="true"
-                autoplay="true"
-                loop="true"
+                muted="muted"
+                autoplay="autoplay"
+                loop="loop"
+                aria-hidden="true"
                 ></video>
             </a>
             <div class="header__tab">
-                <a class="header__title" href="#latest">
+                <a class="header__title" href="#latest" title="Scroll to top">
                     KP
                 </a>
             </div>
         </header>
         <div class="parallax__group" style="contain:layout"> <!-- Stop big overflow on Chrome -->
-            <div class="about__sky parallax__layer parallax__layer--deepest">
+            <div class="about__sky parallax__layer parallax__layer--deepest" aria-hidden="true">
             </div>
-            <div class="about__title-box parallax__layer parallax__layer--back">
+            <div title="About Me" class="about__title-box parallax__layer parallax__layer--back">
                 <svg class="about__title" viewBox="0 0 90 18" aria-hidden="true">
                     <text style="user-select: none" fill="#7FFF00" x="0" y="15">About Me</text>
                 </svg>
@@ -163,13 +163,13 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
                     <text style="user-select: none" fill="#B700FF" x="0" y="15">About Me</text>
                 </svg>
             </div>
-            <div class="about__skyline about__clouds-3 about__background parallax__layer parallax__layer--deeper">
+            <div class="about__skyline about__clouds-3 about__background parallax__layer parallax__layer--deeper" aria-hidden="true">
             </div>
-            <div class="about__skyline about__clouds-2 about__background parallax__layer parallax__layer--deep">
+            <div class="about__skyline about__clouds-2 about__background parallax__layer parallax__layer--deep" aria-hidden="true">
             </div>
-            <div class="about__skyline about__clouds-1 parallax__layer parallax__layer--back">
+            <div class="about__skyline about__clouds-1 parallax__layer parallax__layer--back" aria-hidden="true">
             </div>
-            <div class="parallax__layer parallax__layer--deeper">
+            <div class="parallax__layer parallax__layer--deeper" aria-hidden="true">
                 <div class="about__char"></div>
             </div>
             <div class="parallax__layer parallax__layer--base">
@@ -183,9 +183,9 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
             </div>
         </div>
         <div class="parallax__group">
-            <div class="work__background parallax__layer parallax__layer--base">
+            <div class="work__background parallax__layer parallax__layer--base" aria-hidden="true">
             </div>
-            <div class="work__title-box parallax__layer--base">
+            <div class="work__title-box parallax__layer--base" title="Stuff I've Made">
                 <svg class="work__title" viewBox="0 0 140 18" aria-hidden="true">
                     <text style="user-select: none" fill="#FF00FF" x="0" y="15">Stuff I've Made</text>
                 </svg>
@@ -245,7 +245,7 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
         </div>
         <footer class="footer">
             <div class="footer__tab">
-                <div class="socials--sticky"">
+                <div class="socials--sticky" title="My socials media links">
                     <a href="#email" class="socials__item" title="Email" aria-label="Email">
                         <svg class="feather feather--tapable" aria-hidden="true">
                             <use xlink:href="styles/feather/feather-sprite.svg#mail"/>
@@ -256,14 +256,14 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
                             <use xlink:href="styles/feather/feather-sprite.svg#twitter"/>
                         </svg>
                     </a>
-                    <a href="#footer" class="socials__item" title="More" aria-label="More">
+                    <a href="#footer" class="socials__item" title="Scroll to show more links">
                         <svg class="feather feather--tapable" aria-hidden="true">
                             <use xlink:href="styles/feather/feather-sprite.svg#chevron-down"/>
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="footer__content">
+            <div class="footer__content" title="More social media links">
                 <div class="socials--hidden">
                     <a href="https://github.com/KarlTheCool" class="socials__item" title="Github" aria-label="Github">
                         <svg class="feather feather--tapable" aria-hidden="true">
@@ -271,12 +271,10 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
                         </svg>
                     </a>
                     <a href="https://mastodon.online/@KarlTheCool" rel="me" class="socials__item" title="Mastodon" aria-label="Mastodon">
-                        <img class="feather feather--tapable" aria-hidden="true" src="styles/other-svg/mastodon.svg" />
-                    </img>
+                        <img class="feather feather--tapable" alt="mastodon" aria-hidden="true" src="styles/other-svg/mastodon.svg" />
                     </a>
                     <a href="https://karlthecool.itch.io/" class="socials__item" title="Itch.io" aria-label="Itch.io">
-                        <img class="feather feather--tapable" aria-hidden="true" src="styles/other-svg/itchio.svg" />
-                    </img>
+                        <img class="feather feather--tapable" alt="itch.io" aria-hidden="true" src="styles/other-svg/itchio.svg" />
                     </a>
                     <a href="https://codepen.io/KarlTheCool" class="socials__item" title="Codepen" aria-label="Codepen">
                         <svg class="feather feather--tapable" aria-hidden="true">
@@ -290,7 +288,7 @@ ktw6JtMEt7EuPIh7CQr1LlF7jZk623LOOUJdmk6fT+Oo7PuE
                 </address>
             </div>
         </footer>
-        <div id="footer"></div>
+        <div id="footer" aria-hidden="true"></div>
     </div>
 </body>
 </html>
