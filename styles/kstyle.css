@@ -523,19 +523,19 @@ body {
     to{background-position:100% 0;}
 }
 
-b {
+.text__bold {
     font-weight: normal;
 }
 
-b:nth-child(3n) {
+.text__bold:nth-child(3n) {
     color: #7FFF00;
 }
 
-b:nth-child(3n + 1) {
+.text__bold:nth-child(3n + 1) {
     color: #FF0066;
 }
 
-b:nth-child(3n + 2) {
+.text__bold:nth-child(3n + 2) {
     color: #FF6A00;
 }
 
