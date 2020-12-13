@@ -740,10 +740,6 @@ body {
     border-top: solid 0.25em white;
 }
 
-.footer:focus-within {
-    bottom: 0;
-}
-
 .footer__tab {
     background: black;
 
@@ -772,6 +768,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .socials__item {
     display: flex;
     justify-content: center;
