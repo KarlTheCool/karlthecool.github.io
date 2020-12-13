@@ -285,6 +285,10 @@ body {
     border-bottom: solid 0.25em white;
 }
 
+.header:focus-within {
+    top: 0;
+}
+
 .header__hero {
     display: block;
     position: relative;
@@ -734,6 +738,10 @@ b:nth-child(3n + 2) {
     color: white;
 
     border-top: solid 0.25em white;
+}
+
+.footer:focus-within {
+    bottom: 0;
 }
 
 .footer__tab {
