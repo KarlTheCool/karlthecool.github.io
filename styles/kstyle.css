@@ -724,33 +724,49 @@ body {
 }
 
 .footer {
-    /* Transforms on sticky elements cause jittering */
-    position: sticky;
-    bottom: calc(var(--footer-height) * -1 - 1px);
+    position: relative;
     z-index: 10;
 
     height: var(--footer-height);
 
     color: white;
-
-    border-top: solid 0.25em white;
 }
 
-.footer__tab {
+.socials--sticky__wrapper {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    z-index: 11;
+
+    height: 0;
+    width: 100%;
+}
+
+.footer__content {
     background: black;
 
-    position: absolute;
-    bottom: var(--footer-height);
-    right: 0;
+    width: 100%;
+    height: 100%;
 
+    contain: strict;
     border-top: solid 0.25em white;
-    border-left: solid 0.25em white;
+    transform: translate(0, -0.25em);
 }
 
 .socials--sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(0, -100%);
+
+    background: black;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border-top: solid 0.25em white;
+    border-left: solid 0.25em white;
 
     padding: 1em;
 }
@@ -779,15 +795,6 @@ body {
 
 .socials__item::after {
     content: '' !important;
-}
-
-.footer__content {
-    background: black;
-
-    width: 100%;
-    height: 100%;
-
-    contain: strict;
 }
 
 .legals {
