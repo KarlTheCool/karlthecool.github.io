@@ -9,6 +9,7 @@ Made with <3 in vanilla HTML+CSS. Organized with [BEM](http://getbem.com/introdu
 
 * Be a hub for people snooping from one account/project to another.
 * Don't die if Javascript is disabled
+* Overall, push scriptless markup as far as I can so I'm not reinventing the wheel next time I use a framework.
 
 ## Why didn't you use React, Framework, pre-processor, etc?
 
