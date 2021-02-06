@@ -16,6 +16,14 @@ function App() {
         >
           Check me out on Twitter
         </a>
+        <a
+          className="App-link"
+          href="https://github.com/KarlTheCool"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Or my Github
+        </a>
       </header>
     </div>
   );
