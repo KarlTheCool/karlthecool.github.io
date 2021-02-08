@@ -1,8 +1,15 @@
 import './App.scss';
+import NoScript from 'react-noscript';
+import Snackbar from './components/Snackbar'
 
 function App() {
   return (
     <div className="App">
+      <NoScript>
+        <Snackbar>
+          Hey! You're browsing the scriptless version of this site.
+        </Snackbar>
+      </NoScript>
       <header className="App-header">
         <img src="https://cdn.frankerfacez.com/emoticon/421124/4" className="App-logo" alt="logo" />
         <p>
