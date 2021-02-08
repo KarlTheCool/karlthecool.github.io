@@ -1,5 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-
-Sitemap: https://ka.rlphilli.ps/sitemap.xml
