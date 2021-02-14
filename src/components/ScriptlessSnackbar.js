@@ -1,14 +1,14 @@
-import './Snackbar.scss';
+import './ScriptlessSnackbar.scss';
 import React, { useState } from 'react';
 import uniqueId from 'lodash/uniqueId';
 
-const Snackbar = (props) => {
+const ScriptlessSnackbar = (props) => {
   const { children } = props;
-  const [id] = useState(() => uniqueId('snackbar-'));
+  const [id] = useState(() => uniqueId('scriptlsessnackbar-'));
   return (
     <>
       <input className="action_input" type="checkbox" id={id} />
-      <div className="Snackbar">
+      <div className="ScriptlessSnackbar">
         <div className="body">
           {children}
         </div>
@@ -22,4 +22,4 @@ const Snackbar = (props) => {
   );
 };
 
-export default Snackbar;
+export default ScriptlessSnackbar;

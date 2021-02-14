@@ -7,7 +7,7 @@
   }
 }
 
-.Snackbar {
+.ScriptlessSnackbar {
   position: fixed;
   display: flex;
   flex-wrap: wrap;
@@ -59,11 +59,11 @@
   position: fixed;
   top: -100vh;
   visibility: visible;
-  &:checked ~ .Snackbar {
+  &:checked ~ .ScriptlessSnackbar {
     transform: translate(-50%, calc(-100% - 1em));
     opacity: 0;
   }
-  &:focus ~ .Snackbar .action_label {
+  &:focus ~ .ScriptlessSnackbar .action_label {
     outline: solid gold;
   }
 } 
