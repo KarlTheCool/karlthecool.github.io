@@ -7,8 +7,8 @@ const ScriptlessSnackbar = (props) => {
   const [id] = useState(() => uniqueId('scriptlsessnackbar-'));
   return (
     <>
-      <input className="action_input" type="checkbox" id={id} />
-      <div className="ScriptlessSnackbar">
+      <input aria-label="message visible" className="action_input" type="checkbox" id={id} />
+      <div aria-label="message" className="ScriptlessSnackbar">
         <div className="body">
           {children}
         </div>

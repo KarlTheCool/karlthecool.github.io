@@ -19,7 +19,8 @@
   max-width: 90vw;
   opacity: 1;
   animation: 0.15s slideIn 1.5s backwards;
-  transition: transform 0.15s, opacity 0.15s;
+  transition: transform 0.15s, opacity 0.15s, visibility 0.15s linear;
+  visibility: visible;
   background: white;
   .body {
     padding-top: 0.5em;
@@ -59,9 +60,13 @@
   position: fixed;
   top: -100vh;
   visibility: visible;
+  &:checked {
+    visibility: hidden;
+  }
   &:checked ~ .ScriptlessSnackbar {
     transform: translate(-50%, calc(-100% - 1em));
     opacity: 0;
+    visibility: hidden;
   }
   &:focus ~ .ScriptlessSnackbar .action_label {
     outline: solid gold;
