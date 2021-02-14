@@ -1,37 +1,48 @@
 import './App.scss';
 import NoScript from 'react-noscript';
-import Snackbar from './components/Snackbar'
+import ScriptlessSnackbar from './components/ScriptlessSnackbar'
 
 function App() {
   return (
     <div className="App">
       <NoScript>
-        <Snackbar>
+        <ScriptlessSnackbar>
           Hey! You're browsing the scriptless version of this site.
-        </Snackbar>
+        </ScriptlessSnackbar>
       </NoScript>
-      <header className="App-header">
-        <img src="https://cdn.frankerfacez.com/emoticon/421124/4" className="App-logo" alt="logo" />
-        <p>
-          Welcome to the Karl Zone
-        </p>
-        <a
-          className="App-link"
-          href="https://twitter.com/KarlTheCool"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check me out on Twitter
-        </a>
-        <a
-          className="App-link"
-          href="https://github.com/KarlTheCool"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Or my Github
-        </a>
+      <header>
+        <div className="left">
+          <a rel="me" href="/">
+            Karl Phillips
+          </a>
+        </div>
+        <div className="right">
+          <a rel="me" className="twitter" href="https://twitter.com/KarlTheCool">
+            Twitter
+          </a>
+          <a rel="me" className="github" href="https://github.com/KarlTheCool">
+            Github
+          </a>
+          <a rel="me" className="itchio" href="https://karlthecool.itch.io/">
+            Itch.io
+          </a>
+        </div>
       </header>
+      <main>
+        <p>
+          Hey!
+        </p>
+        <p>
+          We're looking pretty bare right now.
+          You should probably come back later.
+        </p>
+        <p>
+          Maybe check out my presence on other sites? Links are in the top right.
+        </p>
+      </main>
+      <footer>
+        
+      </footer>
     </div>
   );
 }

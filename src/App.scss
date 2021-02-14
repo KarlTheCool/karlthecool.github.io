@@ -1,38 +1,132 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 10s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  min-height: 100vh;
+  /* TODO: Cycle my own art */
+  background-image: url('/assets/pexels-alex-knight.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  & > * {
+    background-color: rgba(0, 0, 0, 0.65);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(25px);
   }
-  to {
-    transform: rotate(360deg);
+  & header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100vw;
+    .left {
+      & a {
+        display: flex;
+        align-items: center;
+        font-family: 'PT Mono', monospace;
+        font-size: 2em;
+        text-decoration: none;
+        word-break: keep-all;
+        transition: filter 0.1s;
+        background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        &:link {
+          color: inherit;
+        }
+        &:visited {
+          color: inherit;
+        }
+        &:hover, &:focus {
+          filter: invert(0.15);
+        }
+        &:active {
+          filter: invert(1);
+        }
+        &::before {
+          content: '~ δ://';
+        }
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      & a {
+        display: flex;
+        align-items: center;
+        font-family: 'PT Mono', monospace;
+        text-decoration: none;
+        transition: filter 0.1s;
+        filter: invert(0);
+        overflow-x: hidden;
+        &:link {
+          color: inherit;
+        }
+        &:visited {
+          color: inherit;
+        }
+        &:hover {
+          filter: invert(0.15);
+        }
+        &:active {
+          filter: invert(1);
+        }
+        &::before {
+          content: '{';
+          font-size: 2em;
+          display: block;
+          transform: translate(-1em, 0);
+          opacity: 0;
+          transition: transform 0.2s, opacity 0.2s;
+        }
+        &::after {
+          content: '}';
+          font-size: 2em;
+          display: block;
+          transform: translate(1em, 0);
+          opacity: 0;
+          transition: transform 0.2s, opacity 0.2s;
+        }
+        &:hover, &:focus {
+          &::before {
+            content: '{';
+            transform: translate(0, 0);
+            opacity: 1.0;
+          }
+          &::after {
+            content: '}';
+            transform: translate(0, 0);
+            opacity: 1.0;
+          }
+        }
+        &.twitter {
+          background-color: #55acee;
+          color: white;
+        }
+        &.github {
+          background-color: #fff;
+          color: #24292e
+        }
+        &.itchio {
+          background-color:#fa5c5c;
+          color: white
+        }
+      }
+    }
+  }
+  & main {
+    flex-grow: 1;
+
+    width: 100%;
+    max-width: 60em;
+    margin: 0 auto;
+    border-radius: 1em;
+    padding: 1em 2em;
+  }
+  & footer {
+
   }
 }
