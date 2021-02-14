@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <NoScript>
         <ScriptlessSnackbar>
-          Hey! You're browsing the scriptless version of this site.
+          You're browsing the scriptless version of this site.
         </ScriptlessSnackbar>
       </NoScript>
       <header>
