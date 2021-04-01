@@ -1,13 +1,14 @@
-import './App.scss';
-import NoScript from 'react-noscript';
-import ScriptlessSnackbar from './components/ScriptlessSnackbar'
+import "./App.scss";
+import React from "react";
+import NoScript from "react-noscript";
+import ScriptlessSnackbar from "./components/ScriptlessSnackbar";
 
 function App() {
   return (
     <div className="App">
       <NoScript>
         <ScriptlessSnackbar>
-          You're browsing the scriptless version of this site.
+          You&#39;re browsing the scriptless version of this site.
         </ScriptlessSnackbar>
       </NoScript>
       <header>
@@ -17,7 +18,11 @@ function App() {
           </a>
         </div>
         <div className="right">
-          <a rel="me" className="twitter" href="https://twitter.com/KarlTheCool">
+          <a
+            rel="me"
+            className="twitter"
+            href="https://twitter.com/KarlTheCool"
+          >
             Twitter
           </a>
           <a rel="me" className="github" href="https://github.com/KarlTheCool">
@@ -29,20 +34,17 @@ function App() {
         </div>
       </header>
       <main>
+        <p>Hey!</p>
         <p>
-          Hey!
+          We&#39;re looking pretty bare right now. You should probably come back
+          later.
         </p>
         <p>
-          We're looking pretty bare right now.
-          You should probably come back later.
-        </p>
-        <p>
-          Maybe check out my presence on other sites? Links are in the top right.
+          Maybe check out my presence on other sites? Links are in the top
+          right.
         </p>
       </main>
-      <footer>
-        
-      </footer>
+      <footer />
     </div>
   );
 }
